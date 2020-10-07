@@ -135,4 +135,141 @@ muhammadhamza.farrukh@factset.com
 
 
 * Questions?
-.link https://github.com/Hamza141 Link to presentation
+Networking
+Tags: networking, tcp, http, websockets, go
+
+Hamza Farrukh
+Software Engineer, FactSet
+muhammadhamza.farrukh@factset.com
+
+
+* What is networking?
+- Communication between computers
+- Client requests some data
+- Server sends the data
+.image ./images/network.png
+# http://wiki.laptop.org/go/File:Scenario_simple_mesh.png
+
+
+* Networking protocols
+- TCP
+- UDP
+- HTTP/HTTPS
+- WebSockets
+- DHCP
+- DNS
+
+
+* TCP
+- Connection based protocol
+- Server waits for a connection
+- Clients initiates a connection
+- A successful three-way handshake establishes a connection
+.image ./images/tcp-handshake-diagram.webp 300 _
+# https://www.cloudflare.com/img/learning/cdn/tls-ssl/tcp-handshake-diagram.png
+
+* TCP Uses
+- Reliable streaming
+- Downloading
+- Anything with money
+- VPNs
+.image ./images/tcp-services.png 200 _
+
+* TCP Server
+.play -edit ./tcp/server.go /SERVER_START OMIT/,/SERVER_END OMIT/
+# https://www.linode.com/docs/development/go/developing-udp-and-tcp-clients-and-servers-in-go/
+
+* TCP Client
+.play -edit ./tcp/simple_client.go /CLIENT_START OMIT/,/CLIENT_END OMIT/
+
+* TCP
+#- +Reliable
+#- +Full duplex
+#- -Acknowledgement overhead
+#- -Not supported for web apps on browsers
+#- -Can get complicated
+.image ./images/tables/tcp.png
+
+
+* UDP
+- Connectionless protocol
+- Client sends "datagram"
+- No error checking
+.image ./images/tcp-vs-udp.png 400 _
+# https://www.educative.io/api/edpresso/shot/5669375870763008/image/5080565785034752
+
+* UDP Uses
+- Streaming with minimum delay
+- Online gaming
+.image ./images/udp-services.png 300 _
+
+* UDP Server
+.play -edit ./udp/server.go /SERVER_START OMIT/,/SERVER_END OMIT/
+# https://jameshfisher.com/2016/11/17/udp-in-go/
+
+* UDP Client
+.play -edit ./udp/simple_client.go /CLIENT_START OMIT/,/CLIENT_END OMIT/
+# https://stackoverflow.com/questions/47280837/golang-udp-client-cant-receive-msg-from-server
+
+* UDP
+# - +Very quick
+# - -Unreliable
+# - -Not supported by browsers
+# - -Can get quite complex
+.image ./images/tables/udp.png
+
+
+* HTTP 1.X
+- Built on top of TCP
+- Connectionless - new connection established for each request
+- Powers the web
+- Uses standardized ports (80 and 443) to bypass firewalls
+.image ./images/http-overview.png 350 _
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview
+
+* HTTP Server
+.play -edit ./http/server.go /SERVER_START OMIT/,/SERVER_END OMIT/
+
+* HTTP Client
+.play -edit ./http/simple_client.go /CLIENT_START OMIT/,/CLIENT_END OMIT/
+
+* HTTP
+#- +Lower resource usage since connections are closed after response
+#- +Fairly simple
+#- -Pretty verbose
+#- -Streaming data gets weird
+.image ./images/tables/http.png _ 1000
+.image ./images/http-response.png 350 _
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview
+
+
+* WebSocket
+- Uses an HTTP request to establish a connection
+- Behaves like a regular tcp connection
+- Connects over the same standardized ports as HTTP
+- An HTTP "Upgrade" request is what makes this magic happen
+.image ./images/websockets.jpg 400 _
+# https://www.vaadata.com/blog/websockets-security-attacks-risks/
+
+* WebSocket Server
+.play -edit ./websocket/server.go /SERVER_START OMIT/,/SERVER_END OMIT/
+
+* WebSocket Client
+.play -edit ./websocket/simple_client.go /CLIENT_START OMIT/,/CLIENT_END OMIT/
+
+* WebSocket Pros/Cons
+# - +Full duplex
+# - +Supported by all major browsers and mobile platforms
+# - +Works on the same ports as HTTP
+# - -Can get complicated like tcp
+.image ./images/tables/websockets.png _ 1000
+
+
+* Other interesting protocols
+.link https://webrtc.org/ WebRTC - enables real-time peer to peer connections over the web
+.link https://developers.google.com/web/fundamentals/performance/http2 HTTP/2 - adds features like server push and multiplexing
+.link https://socket.io/ Socket.IO - makes dealing with websockets much easier
+
+
+* Questions?
+.link https://github.com/Hamza141/networking-presentation Link to presentation
